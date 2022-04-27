@@ -1,0 +1,187 @@
+.divider {
+    margin-left: 1rem;
+    margin-right: .875rem;
+}
+
+.group-spacing-16 .divider {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.group-spacing-16 .divider.hasContent {
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.divider {
+    clear: both;
+    z-index: 1;
+    height: 0;
+    border-top: thin solid rgba(0, 0, 0, 0.3);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    pointer-events: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hasContent {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
+.contentDiv {
+    display: block;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 2px 4px;
+    line-height: 13px;
+    font-size: 12px;
+    margin-top: -1px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* text  */
+
+/*! CSS Used from: https://discord.com/assets/40532.45050b2e9a7f5d398f49.css */
+.colorHeaderSecondary {
+    color: var(--header-secondary);
+}
+
+.size14 {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.size32 {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.base {
+    font-weight: 600;
+    font-family: var(--font-display);
+    color: var(--header-primary);
+}
+
+div, h3, p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+p {
+    margin: 14px 0;
+}
+
+::-webkit-input-placeholder {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+::-moz-placeholder {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+:-ms-input-placeholder {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+::placeholder {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+::-webkit-input-placeholder {
+    font-family: var(--font-primary);
+    text-rendering: optimizeLegibility;
+}
+
+::-moz-placeholder {
+    font-family: var(--font-primary);
+    text-rendering: optimizeLegibility;
+}
+
+:-ms-input-placeholder {
+    font-family: var(--font-primary);
+    text-rendering: optimizeLegibility;
+}
+
+::placeholder {
+    font-family: var(--font-primary);
+    text-rendering: optimizeLegibility;
+}
+
+div {
+    outline: 0;
+}
+
+.containerHeader {
+    padding: 16px 16px 26px 16px;
+}
+
+.containerHeader, .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.containerHeader img {
+    width: 250px;
+    height: 250px
+}
+
+.inner {
+    max-width: 400px;
+}
+
+.titleName {
+    text-align: center;
+    font-weight: 700;
+}
+
+.titleNameP{
+    font-family: 'Montserrat Bold'!important
+}
+
+.titleName p {
+    margin: 0;
+}
+
+.subtitle {
+    margin-top: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.subtitle.noChildren {
+    margin-bottom: 0;
+}

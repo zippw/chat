@@ -1,0 +1,149 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
+
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+
+<link rel="stylesheet" href="./assets/css/chat.css">
+<link rel="stylesheet" href="./assets/css/css.css">
+<link rel="stylesheet" href="./assets/css/all.min.css">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#282a36">
+<meta name="theme-color" content="#000000">
+
+<meta property="og:type" content="website">
+<meta property="og:description" content="This project is under development">
+<meta property="og:url" content="https://zippw.github.io/chat">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://zippw.github.io/chat/assets/img/banner4.png">
+<meta property="og:site_name" content="Zippchat">
+<meta property="og:title" content="ZippChat | Group For Everyone">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDD3RumRasrbr4LipUwNWqqE4BNe_bqvs4",
+    authDomain: "first-messanger.firebaseapp.com",
+    databaseURL: "https://first-messanger-default-rtdb.firebaseio.com",
+    projectId: "first-messanger",
+    storageBucket: "first-messanger.appspot.com",
+    messagingSenderId: "180405991294",
+    appId: "1:180405991294:web:52bfae4b378425ae50a52f"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  firebase.database().ref("messages").on("child_removed", function (snapshot) {
+    document.getElementById("message-" + snapshot.key).innerHTML = "Сообщение удалено!";
+  });
+
+  function deleteMessage(self) {
+    var messageId = self.getAttribute("data-id");
+    firebase.database().ref("messages").child(messageId).remove();
+  }
+
+  async function sendMessage(image) {
+    var message = document.getElementById("message").value;
+    var timestamp = new Date().toString();
+    if (image) {
+      console.log('send')
+      await firebase.database().ref("messages").push().set({
+        "message": '<img src=\'' + image + '\' title=\'Данного изображения не существует, или оно не может читаться\' onerror=\'this.src=\`assets/img/404image.png\`\'>',
+        "sender": myName,
+        "ts": timestamp
+      });
+    } else {
+      await firebase.database().ref("messages").push().set({
+        "message": message,
+        "sender": myName,
+        "ts": timestamp
+      });
+    }
+    return false;
+  }
+</script>
+
+<!-- <div class="nav">
+  <div class="navTitle">
+    <img class="navImg" src="assets/img/logo_favicon.png" alt="">
+  </div>
+  <div class="navItems">
+    <li>
+      <img class="navItemsImg" src="assets/img/logo_light.png" alt="">
+      <a href="">ZippMusic</a>
+    </li>
+    <li>
+      <img class="navItemsImg" src="assets/img/logo_light.png" alt="">
+      <a href="">ZippMusic</a>
+    </li>
+  </div>
+</div> -->
+<div class="chat">
+  <div class="chat-title">
+    <h1>ZippChat</h1>
+    <!-- <h2>ZippChat</h2> -->
+    <!-- <figure class="avatar">
+      <img src="https://zippw.xyz/img/favicons/android-chrome-96x96.png" />
+    </figure> -->
+  </div>
+  <div class="messages">
+    <div class="messages-content">
+      <div class="containerHeader">
+        <img unselectable="on"
+          src="https://cdn.discordapp.com/attachments/910155723172900905/952256697781587988/1647106052961.png" alt="">
+        <div class="inner">
+          <div>
+            <h3 class="titleName base size32">
+              <p class="titleNameP" unselectable="on">Добро пожаловать!</p>
+            </h3>
+            <div unselectable="on" class="colorHeaderSecondary size14 subtitle noChildren">Это начало истории общения.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="message-box">
+    <div class="message-input-image">
+      <input placeholder="URL изображения" type="text">
+      <button type="submit"><i class="fas fa-plus"></i></button>
+    </div>
+    <div class="message-input-area">
+      <button type="submit" class="message-img"><i class="fas fa-image"></i></button>
+      <textarea type="text" class="message-input" id="message" placeholder="Написать"></textarea>
+      <div class="message-input" id="messageBlocked">Вы должны войти</div>
+      <button type="submit" class="message-submit"><i class="fas fa-paper-plane-top"></i></button>
+    </div>
+  </div>
+
+</div>
+<script>
+  const copyToClipboard = str => {
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='assets/js/autolinker.min.js'></script>
+<!-- <script
+  src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script> -->
+
+<script src="assets/js/index.js?v=<?= time(); ?>"></script>
